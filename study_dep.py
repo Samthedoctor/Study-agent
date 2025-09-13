@@ -1,5 +1,5 @@
 import os
-from typing import TypedDict, Annotated, List
+from typing_extensions import TypedDict, Annotated, List
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, BaseMessage, ToolMessage
 from langchain_core.tools import tool

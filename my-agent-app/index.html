@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My LangGraph Agent</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f7f7f7; }
+        h1 { text-align: center; }
+        #chat-window { border: 1px solid #ddd; padding: 15px; height: 400px; overflow-y: scroll; background-color: #fff; border-radius: 8px; margin-bottom: 15px; }
+        #chat-window p { margin: 0 0 10px 0; line-height: 1.4; }
+        #input-area { display: flex; }
+        #user-input { flex-grow: 1; border: 1px solid #ddd; padding: 10px; border-radius: 8px; }
+        #send-btn { border: none; background-color: #007bff; color: white; padding: 10px 15px; margin-left: 10px; border-radius: 8px; cursor: pointer; }
+        #send-btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <h1>Chat with your Agent</h1>
+
+    <div id="chat-window"></div>
+    <div id="input-area">
+        <input type="text" id="user-input" placeholder="Add a subject...">
+        <button id="send-btn">Send</button>
+    </div>
+
+    <script>
+        // 1. Get references to the HTML elements
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        // 2. A variable to store the conversation ID
+        let threadId = null; 
+
+        // 3. Function to send a message
+        async function sendMessage() {
+            const message = userInput.value;
+            if (!message) return; // Don't send empty messages
+
+            appendMessage('You', message);
+            userInput.value = ''; // Clear the input box
+
+            // 4. Send the message to OUR backend
+            const response = await fetch('http://127.0.0.1:5000/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: message,
+                    thread_id: threadId // Send the current ID
+                })
+            });
+
+            const data = await response.json();
+
+            // 5. Save the thread ID for the next message
+            threadId = data.thread_id; 
+
+            // 6. Display the agent's response
+            appendMessage('Agent', data.response);
+        }
+
+        // Helper function to add messages to the chat window
+        function appendMessage(sender, text) {
+            const messageElement = document.createElement('p');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${text}`;
+            chatWindow.appendChild(messageElement);
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll
+        }
+
+        // 7. Event Listeners
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+
+</body>
+</html>
