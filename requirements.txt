@@ -22,3 +22,6 @@ python-dotenv
 unstructured[all-docs]
 tqdm
 python-dateutil
+Flask 
+requests 
+flask-cors
