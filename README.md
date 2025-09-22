@@ -1,10 +1,10 @@
 # Study Agent 🧠✨
 
-![Status](https://img.shields.io/badge/status-in%20progress-yellow)
+![Status](https://img.shields.io/badge/status-active-green)
 
 An intelligent, AI-powered agent designed to help students organize their academic life. This project uses a stateful agent architecture built with **LangGraph** to provide a personalized and persistent study planning experience.
 
-This is an **ongoing project**. The core foundation is being built, and new features will be added incrementally.
+This project is feature-complete and is actively maintained.
 
 ***
 
@@ -16,28 +16,24 @@ The goal of Study Agent is to be a one-stop solution for students to manage thei
 
 ## ✨ Features
 
-### ✅ Currently Implemented
+* **🎓 Academic Management:**
+    * Add, update, and delete subjects and their specific topics.
+* **📅 Smart Scheduling:**
+    * Plan class days and set quiz dates for different topics.
+* **📈 Progress & Attendance:**
+    * Log study progress for exams and track class attendance.
+* **🤖 Intelligent Planning:**
+    * Generate personalized study plans based on your deadlines and progress.
+* **🔔 Notifications:**
+    * Receive reminders for classes, quizzes, and study sessions.
 
-These are the features that are currently working in the project:
+***
 
-* **Subject Management:**
-    * Add new subjects to your academic profile.
-    * Update the names of existing subjects.
-    * Delete subjects you no longer need.
-* **Topic Management:**
-    * Add specific topics under each subject.
-    * Update the details of any topic.
-    * Delete topics from a subject.
+## 🎬 Demo
 
-### 🚀 Planned Features (Roadmap)
+Here's a short video of the Study Agent in action, managing calendar-related tasks:
 
-This is where the project is heading:
-
-* **📅 Smart Scheduling:** Plan which days to hold classes or take quizzes for specific topics.
-* **📈 Progress Tracking:** Log how much you've studied for an upcoming quiz or exam.
-* **✅ Attendance Monitoring:** Keep a simple log of your attendance for different subjects.
-* **🤖 Personalized Plans:** Generate study plans based on upcoming deadlines and your recorded progress.
-* **🔔 Notification System:** Get reminders for upcoming classes, quizzes, and study sessions.
+[**Watch the Demo on Google Drive**](https://drive.google.com/file/d/1gWhxTA3S-kmCunlEvKUi2OEF8fYM-GR0/view?usp=sharing)
 
 ***
 
@@ -46,8 +42,6 @@ This is where the project is heading:
 * **Agent Framework:** **LangChain** & **LangGraph** are used to create the core stateful, multi-agent logic.
 * **Database:** **MongoDB** serves as the persistent memory backend for the LangGraph state, ensuring that your data (subjects, topics, etc.) is saved across sessions.
 * **LLM:** **Google Gemini** is the Large Language Model that powers the agent's intelligence and natural language understanding.
-
-
 
 ***
 
@@ -64,10 +58,10 @@ Follow these steps to get the project running on your local machine.
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/your-username/study-agent.git](https://github.com/your-username/study-agent.git)
-    cd study-agent
+    git clone [https://github.com/Samthedoctor/Study-agent.git](https://github.com/Samthedoctor/Study-agent.git)
+    cd Study-agent
     ```
-    *(Replace `your-username/study-agent.git` with your actual repository URL)*
+    *(Note: I've used your actual repository URL here.)*
 
 2.  **Create and Activate a Virtual Environment**
     * On Windows:
