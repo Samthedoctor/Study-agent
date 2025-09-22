@@ -7,6 +7,10 @@ from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 @tool
 def add_subject(subject: str) -> str:
     """Adds a subject to the list of subjects."""
